@@ -3,13 +3,23 @@ package com.example.animalcount
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Surface
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Add
+import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.Modifier
-import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.unit.dp
+import com.example.animalcount.model.Animal
 import com.example.animalcount.ui.theme.AnimalCountTheme
 
 class MainActivity : ComponentActivity() {
@@ -17,30 +27,52 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             AnimalCountTheme {
-                // A surface container using the 'background' color from the theme
-                Surface(
-                    modifier = Modifier.fillMaxSize(),
-                    color = MaterialTheme.colorScheme.background
-                ) {
-                    Greeting("Android")
-                }
+                AnimalList()
             }
         }
     }
 }
 
 @Composable
-fun Greeting(name: String, modifier: Modifier = Modifier) {
-    Text(
-        text = "Hello $name!",
-        modifier = modifier
+fun AnimalList() {
+    val animalList = listOf(
+        Animal(name = "Cat"),
+        Animal(name = "Cow"),
+        Animal(name = "Crab"),
+        Animal(name = "Dog"),
+        Animal(name = "Seal"),
+        Animal(name = "Sea Lion"),
     )
+
+    Column(verticalArrangement = Arrangement.spacedBy(10.dp)) {
+        for (animal in animalList) {
+            AnimalRow(animal)
+        }
+    }
 }
 
-@Preview(showBackground = true)
 @Composable
-fun GreetingPreview() {
-    AnimalCountTheme {
-        Greeting("Android")
+fun AnimalRow(animal: Animal) {
+    Row(
+        verticalAlignment = Alignment.CenterVertically,
+    ) {
+        var count by remember { mutableStateOf(animal.count) }
+        IconButton(
+            onClick = { count-- }
+        ) {
+            Icon(
+                painter = painterResource(R.drawable.baseline_remove_24),
+                contentDescription = "Remove one"
+            )
+        }
+        Text("${animal.name}: $count")
+        IconButton(
+            onClick = { count++ }
+        ) {
+            Icon(
+                Icons.Default.Add,
+                contentDescription = "Add one"
+            )
+        }
     }
 }
