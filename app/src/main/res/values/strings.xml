@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Animal Count</string>
+    <string name="add_one">Add one</string>
+    <string name="remove_one">Remove one</string>
 </resources>
