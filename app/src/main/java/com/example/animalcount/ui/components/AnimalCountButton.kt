@@ -11,8 +11,11 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.semantics.Role
-import androidx.compose.ui.unit.dp
+import androidx.compose.ui.tooling.preview.Preview
+import com.example.animalcount.R
+import com.example.animalcount.ui.theme.HugePadding
 
 @Composable
 fun AnimalCountButton(
@@ -25,7 +28,7 @@ fun AnimalCountButton(
 ) {
     Box(
         modifier = modifier
-            .size(60.dp)
+            .size(HugePadding)
             .background(color)
             .clickable(
                 onClick = onClick,
@@ -39,4 +42,48 @@ fun AnimalCountButton(
             contentDescription = contentDescription,
         )
     }
+}
+
+@Composable
+fun DecreaseAnimalCountButton(
+    modifier: Modifier = Modifier,
+    enabled: Boolean = true,
+    onClick: () -> Unit,
+) {
+    AnimalCountButton(
+        color = Color.Red,
+        icon = R.drawable.baseline_remove_24,
+        modifier = modifier,
+        contentDescription = stringResource(id = R.string.remove_one),
+        enabled = enabled,
+        onClick = onClick,
+    )
+}
+
+@Composable
+fun IncreaseAnimalCountButton(
+    modifier: Modifier = Modifier,
+    enabled: Boolean = true,
+    onClick: () -> Unit,
+) {
+    AnimalCountButton(
+        color = Color.Green,
+        icon = R.drawable.baseline_add_24,
+        modifier = modifier,
+        contentDescription = stringResource(id = R.string.add_one),
+        enabled = enabled,
+        onClick = onClick,
+    )
+}
+
+@Preview
+@Composable
+fun DecreaseAnimalCountButtonPreview() {
+    DecreaseAnimalCountButton { }
+}
+
+@Preview
+@Composable
+fun IncreaseAnimalCountButtonPreview() {
+    IncreaseAnimalCountButton { }
 }

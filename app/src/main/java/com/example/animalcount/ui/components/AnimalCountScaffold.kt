@@ -10,7 +10,9 @@ import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import com.example.animalcount.ui.theme.AnimalCountTheme
+import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.tooling.preview.Preview
+import com.example.animalcount.R
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -18,25 +20,29 @@ fun AnimalCountScaffold(
     modifier: Modifier = Modifier,
     content: @Composable () -> Unit,
 ) {
-    AnimalCountTheme {
-        Scaffold(
-            modifier = modifier,
-            topBar = {
-                TopAppBar(
-                    colors = TopAppBarDefaults.topAppBarColors().copy(
-                        containerColor = MaterialTheme.colorScheme.primary,
-                        titleContentColor = MaterialTheme.colorScheme.onPrimary,
-                    ),
-                    title = {
-                        Text(
-                            text = "Animal Count",
-                            style = MaterialTheme.typography.titleLarge,
-                        )
-                    }
-                )
-            }
-        ) { contentPadding ->
-            Box(modifier = Modifier.padding(contentPadding)) { content() }
+    Scaffold(
+        modifier = modifier,
+        topBar = {
+            TopAppBar(
+                colors = TopAppBarDefaults.topAppBarColors().copy(
+                    containerColor = MaterialTheme.colorScheme.primary,
+                    titleContentColor = MaterialTheme.colorScheme.onPrimary,
+                ),
+                title = {
+                    Text(
+                        text = stringResource(id = R.string.app_name),
+                        style = MaterialTheme.typography.titleLarge,
+                    )
+                }
+            )
         }
+    ) { contentPadding ->
+        Box(modifier = Modifier.padding(contentPadding)) { content() }
     }
+}
+
+@Preview
+@Composable
+fun AnimalCountScaffoldPreview() {
+    AnimalCountScaffold { }
 }

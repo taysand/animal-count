@@ -10,11 +10,10 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.unit.dp
-import com.example.animalcount.R
+import androidx.compose.ui.tooling.preview.Preview
 import com.example.animalcount.model.Animal
+import com.example.animalcount.ui.theme.MediumPadding
+import com.example.animalcount.util.SampleAnimalList
 
 @Composable
 fun AnimalRow(
@@ -24,27 +23,24 @@ fun AnimalRow(
     Row(
         verticalAlignment = Alignment.CenterVertically,
         horizontalArrangement = Arrangement.spacedBy(
-            space = 10.dp,
+            space = MediumPadding,
             alignment = Alignment.CenterHorizontally
         ),
         modifier = modifier.fillMaxWidth(),
     ) {
         var count by remember { mutableIntStateOf(animal.count) }
-        AnimalCountButton(
-            color = Color.Red,
-            icon = R.drawable.baseline_remove_24,
-            contentDescription = stringResource(id = R.string.remove_one),
-        ) { count-- }
+        DecreaseAnimalCountButton { count-- }
         AnimalInfo(
             count = count,
             animal = animal,
             modifier = Modifier.weight(1f),
         )
-        AnimalCountButton(
-            color = Color.Green,
-            icon = R.drawable.baseline_add_24,
-            contentDescription = stringResource(id = R.string.add_one),
-        ) { count++ }
+        IncreaseAnimalCountButton { count++ }
     }
 }
 
+@Preview
+@Composable
+fun AnimalRowPreview() {
+    AnimalRow(animal = SampleAnimalList[0])
+}
