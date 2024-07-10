@@ -1,7 +1,8 @@
-package com.example.animalcount.model
+package com.example.animalcount.model.source
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey
+import com.example.animalcount.model.Animal
 
 @Entity(
     tableName = "animal"

@@ -1,6 +1,9 @@
 package com.example.animalcount.model
 
 import com.example.animalcount.di.DefaultDispatcher
+import com.example.animalcount.model.source.AnimalDao
+import com.example.animalcount.model.source.toExternal
+import com.example.animalcount.model.source.toLocal
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map

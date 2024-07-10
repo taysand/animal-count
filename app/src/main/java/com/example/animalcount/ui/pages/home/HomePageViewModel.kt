@@ -1,4 +1,4 @@
-package com.example.animalcount.navigation.pages.animallist
+package com.example.animalcount.ui.pages.home
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -13,11 +13,11 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class AnimalListPageViewModel @Inject constructor(
+class HomePageViewModel @Inject constructor(
     private val repository: AnimalRepository,
 ) : ViewModel() {
-    private val _uiState = MutableStateFlow(AnimalListPageState())
-    val uiState: StateFlow<AnimalListPageState> = _uiState.asStateFlow()
+    private val _uiState = MutableStateFlow(HomePageUiState())
+    val uiState: StateFlow<HomePageUiState> = _uiState.asStateFlow()
 
     init {
         viewModelScope.launch {
@@ -31,6 +31,6 @@ class AnimalListPageViewModel @Inject constructor(
 
 }
 
-data class AnimalListPageState(
+data class HomePageUiState(
     val animalList: List<Animal> = emptyList(),
 )

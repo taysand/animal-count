@@ -1,4 +1,4 @@
-package com.example.animalcount.model
+package com.example.animalcount.model.source
 
 import androidx.room.Database
 import androidx.room.RoomDatabase
