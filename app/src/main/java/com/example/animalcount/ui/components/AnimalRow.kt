@@ -29,13 +29,13 @@ fun AnimalRow(
         modifier = modifier.fillMaxWidth(),
     ) {
         var count by remember { mutableIntStateOf(animal.count) }
-        DecreaseAnimalCountButton { count-- }
+        DecreaseCountButton { count-- }
         AnimalInfo(
             count = count,
             animal = animal,
             modifier = Modifier.weight(1f),
         )
-        IncreaseAnimalCountButton { count++ }
+        IncreaseCountButton { count++ }
     }
 }
 

@@ -1,4 +1,4 @@
-package com.example.animalcount.navigation.pages.animallist
+package com.example.animalcount.ui.pages.home
 
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -9,9 +9,9 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.animalcount.ui.components.AnimalList
 
 @Composable
-fun AnimalListPage(
+fun HomePage(
     modifier: Modifier = Modifier,
-    viewModel: AnimalListPageViewModel = viewModel(),
+    viewModel: HomePageViewModel = viewModel(),
 ) {
     val uiState by viewModel.uiState.collectAsStateWithLifecycle()
     val animalList = uiState.animalList

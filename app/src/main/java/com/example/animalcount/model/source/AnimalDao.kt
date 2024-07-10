@@ -1,4 +1,4 @@
-package com.example.animalcount.model
+package com.example.animalcount.model.source
 
 import androidx.room.Dao
 import androidx.room.Query

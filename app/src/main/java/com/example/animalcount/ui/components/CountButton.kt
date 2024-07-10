@@ -18,7 +18,7 @@ import com.example.animalcount.R
 import com.example.animalcount.ui.theme.HugePadding
 
 @Composable
-fun AnimalCountButton(
+fun CountButton(
     color: Color,
     @DrawableRes icon: Int,
     modifier: Modifier = Modifier,
@@ -45,12 +45,12 @@ fun AnimalCountButton(
 }
 
 @Composable
-fun DecreaseAnimalCountButton(
+fun DecreaseCountButton(
     modifier: Modifier = Modifier,
     enabled: Boolean = true,
     onClick: () -> Unit,
 ) {
-    AnimalCountButton(
+    CountButton(
         color = Color.Red,
         icon = R.drawable.baseline_remove_24,
         modifier = modifier,
@@ -61,12 +61,12 @@ fun DecreaseAnimalCountButton(
 }
 
 @Composable
-fun IncreaseAnimalCountButton(
+fun IncreaseCountButton(
     modifier: Modifier = Modifier,
     enabled: Boolean = true,
     onClick: () -> Unit,
 ) {
-    AnimalCountButton(
+    CountButton(
         color = Color.Green,
         icon = R.drawable.baseline_add_24,
         modifier = modifier,
@@ -78,12 +78,12 @@ fun IncreaseAnimalCountButton(
 
 @Preview
 @Composable
-fun DecreaseAnimalCountButtonPreview() {
-    DecreaseAnimalCountButton { }
+fun DecreaseCountButtonPreview() {
+    DecreaseCountButton { }
 }
 
 @Preview
 @Composable
-fun IncreaseAnimalCountButtonPreview() {
-    IncreaseAnimalCountButton { }
+fun IncreaseCountButtonPreview() {
+    IncreaseCountButton { }
 }

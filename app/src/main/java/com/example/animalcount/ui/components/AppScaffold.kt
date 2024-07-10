@@ -16,7 +16,7 @@ import com.example.animalcount.R
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun AnimalCountScaffold(
+fun AppScaffold(
     modifier: Modifier = Modifier,
     content: @Composable () -> Unit,
 ) {
@@ -44,5 +44,5 @@ fun AnimalCountScaffold(
 @Preview
 @Composable
 fun AnimalCountScaffoldPreview() {
-    AnimalCountScaffold { }
+    AppScaffold { }
 }

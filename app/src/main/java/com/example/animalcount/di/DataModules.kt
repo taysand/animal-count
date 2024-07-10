@@ -2,8 +2,8 @@ package com.example.animalcount.di
 
 import android.content.Context
 import androidx.room.Room
-import com.example.animalcount.model.AnimalDao
-import com.example.animalcount.model.AnimalDatabase
+import com.example.animalcount.model.source.AnimalDao
+import com.example.animalcount.model.source.AnimalDatabase
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
