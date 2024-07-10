@@ -16,7 +16,7 @@ class MainActivity : ComponentActivity() {
         setContent {
             AnimalCountTheme {
                 AnimalCountScaffold {
-                    AnimalListPage(SampleAnimalList)
+                    AnimalListPage()
                 }
             }
         }

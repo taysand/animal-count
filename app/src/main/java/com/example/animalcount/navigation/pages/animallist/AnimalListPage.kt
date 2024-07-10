@@ -1,34 +1,26 @@
 package com.example.animalcount.navigation.pages.animallist
 
-import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Column
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.tooling.preview.Preview
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.lifecycle.viewmodel.compose.viewModel
-import com.example.animalcount.model.Animal
-import com.example.animalcount.ui.components.AnimalRow
-import com.example.animalcount.ui.theme.LargePadding
-import com.example.animalcount.util.SampleAnimalList
+import com.example.animalcount.ui.components.AnimalList
 
 @Composable
 fun AnimalListPage(
-    list: List<Animal>,
     modifier: Modifier = Modifier,
-    viewModel: AnimalListPageViewModel = viewModel()
+    viewModel: AnimalListPageViewModel = viewModel(),
 ) {
-    Column(
-        verticalArrangement = Arrangement.spacedBy(LargePadding),
-        modifier = modifier,
-    ) {
-        for (animal in list) {
-            AnimalRow(animal)
-        }
+    val uiState by viewModel.uiState.collectAsStateWithLifecycle()
+    val animalList = uiState.animalList
+    if (animalList.isNotEmpty()) {
+        AnimalList(
+            modifier = modifier,
+            list = animalList,
+        )
+    } else {
+        Text("empty state")
     }
-}
-
-@Preview
-@Composable
-fun AnimalListPagePreview() {
-    AnimalListPage(SampleAnimalList)
 }
