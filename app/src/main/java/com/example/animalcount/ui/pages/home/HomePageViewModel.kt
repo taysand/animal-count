@@ -29,6 +29,11 @@ class HomePageViewModel @Inject constructor(
         }
     }
 
+    fun addAnimal() {
+        viewModelScope.launch {
+            repository.create("Test animal")
+        }
+    }
 }
 
 data class HomePageUiState(

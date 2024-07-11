@@ -23,7 +23,7 @@ fun HomePage(
     AppScaffold(
         floatingActionButton = {
             FloatingActionButton(
-                onClick = {  },
+                onClick = { viewModel.addAnimal() },
             ) {
                 Icon(
                     Icons.Filled.Add,
