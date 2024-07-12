@@ -38,6 +38,9 @@ fun HomePage(
                 list = animalList,
                 increaseCount = { index ->
                     viewModel.increaseCount(index)
+                },
+                deleteAnimal = { index ->
+                    viewModel.deleteAnimal(index)
                 }
             )
         } else {

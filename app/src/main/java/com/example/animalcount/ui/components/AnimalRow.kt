@@ -15,6 +15,7 @@ import com.example.animalcount.util.SampleAnimalList
 fun AnimalRow(
     animal: Animal,
     increaseCount: () -> Unit,
+    deleteAnimal: () -> Unit,
     modifier: Modifier = Modifier,
 ) {
     Row(
@@ -25,12 +26,12 @@ fun AnimalRow(
         ),
         modifier = modifier.fillMaxWidth(),
     ) {
-        DecreaseCountButton { }
+        DeleteButton { deleteAnimal() }
         AnimalInfo(
             animal = animal,
             modifier = Modifier.weight(1f),
         )
-        IncreaseCountButton { increaseCount() }
+        IncrementCountButton { increaseCount() }
     }
 }
 
@@ -39,6 +40,7 @@ fun AnimalRow(
 fun AnimalRowPreview() {
     AnimalRow(
         animal = SampleAnimalList[0],
+        deleteAnimal = { },
         increaseCount = { },
     )
 }
