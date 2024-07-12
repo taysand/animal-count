@@ -4,6 +4,7 @@ import android.content.Context
 import androidx.room.Room
 import com.example.animalcount.model.source.AnimalDao
 import com.example.animalcount.model.source.AnimalDatabase
+import com.example.animalcount.model.source.ANIMAL_DATABASE
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -20,7 +21,7 @@ object DatabaseModule {
         return Room.databaseBuilder(
             context.applicationContext,
             AnimalDatabase::class.java,
-            "Animals.db"
+            name = ANIMAL_DATABASE,
         ).build()
     }
 
