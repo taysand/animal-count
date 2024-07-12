@@ -28,8 +28,16 @@ class AnimalRepository @Inject constructor(
             name = name,
             count = 0
         )
-        localDataSource.upsert(animal.toLocal())
+        localDataSource.addAnimal(animal.toLocal())
         return animalId
+    }
+
+    suspend fun increaseCount(animal: Animal) {
+        localDataSource.updateAnimal(animal.toLocal())
+    }
+
+    suspend fun deleteAnimal(animal: Animal) {
+        localDataSource.deleteAnimal(animal.toLocal())
     }
 
     private fun createAnimalId(): String {

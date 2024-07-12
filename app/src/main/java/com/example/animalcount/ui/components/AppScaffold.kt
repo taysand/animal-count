@@ -2,7 +2,11 @@ package com.example.animalcount.ui.components
 
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.padding
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Add
 import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.FloatingActionButton
+import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
@@ -18,6 +22,7 @@ import com.example.animalcount.R
 @Composable
 fun AppScaffold(
     modifier: Modifier = Modifier,
+    floatingActionButton: (@Composable () -> Unit)? = null,
     content: @Composable () -> Unit,
 ) {
     Scaffold(
@@ -35,7 +40,12 @@ fun AppScaffold(
                     )
                 }
             )
-        }
+        },
+        floatingActionButton = {
+            if (floatingActionButton != null) {
+                floatingActionButton()
+            }
+        },
     ) { contentPadding ->
         Box(modifier = Modifier.padding(contentPadding)) { content() }
     }
@@ -44,5 +54,16 @@ fun AppScaffold(
 @Preview
 @Composable
 fun AnimalCountScaffoldPreview() {
-    AppScaffold { }
+    AppScaffold(
+        floatingActionButton = {
+            FloatingActionButton(
+                onClick = { },
+            ) {
+                Icon(
+                    Icons.Filled.Add,
+                    contentDescription = "",
+                )
+            }
+        }
+    ) { }
 }

@@ -1,8 +1,11 @@
 package com.example.animalcount.model.source
 
 import androidx.room.Dao
+import androidx.room.Delete
+import androidx.room.Insert
+import androidx.room.OnConflictStrategy
 import androidx.room.Query
-import androidx.room.Upsert
+import androidx.room.Update
 import kotlinx.coroutines.flow.Flow
 
 @Dao
@@ -10,15 +13,12 @@ interface AnimalDao {
     @Query("SELECT * FROM animal")
     fun observeAll(): Flow<List<LocalAnimal>>
 
-    @Upsert
-    suspend fun upsert(animal: LocalAnimal)
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    suspend fun addAnimal(animal: LocalAnimal)
 
-    @Upsert
-    suspend fun upsertAll(animals: List<LocalAnimal>)
+    @Update
+    suspend fun updateAnimal(animal: LocalAnimal)
 
-    @Query("UPDATE animal SET count = :count WHERE id = :animalId")
-    suspend fun updateCount(animalId: String, count: Int)
-
-    @Query("DELETE FROM animal")
-    suspend fun deleteAll()
+    @Delete
+    suspend fun deleteAnimal(animal: LocalAnimal)
 }
