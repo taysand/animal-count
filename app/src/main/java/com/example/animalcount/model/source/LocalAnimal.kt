@@ -5,7 +5,7 @@ import androidx.room.PrimaryKey
 import com.example.animalcount.model.Animal
 
 @Entity(
-    tableName = "animal"
+    tableName = ANIMAL_TABLE
 )
 data class LocalAnimal(
     @PrimaryKey val id: String,

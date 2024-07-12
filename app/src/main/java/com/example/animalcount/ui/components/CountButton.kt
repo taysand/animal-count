@@ -45,23 +45,7 @@ fun CountButton(
 }
 
 @Composable
-fun DecreaseCountButton(
-    modifier: Modifier = Modifier,
-    enabled: Boolean = true,
-    onClick: () -> Unit,
-) {
-    CountButton(
-        color = Color.Red,
-        icon = R.drawable.baseline_remove_24,
-        modifier = modifier,
-        contentDescription = stringResource(id = R.string.remove_one),
-        enabled = enabled,
-        onClick = onClick,
-    )
-}
-
-@Composable
-fun IncreaseCountButton(
+fun IncrementCountButton(
     modifier: Modifier = Modifier,
     enabled: Boolean = true,
     onClick: () -> Unit,
@@ -78,12 +62,6 @@ fun IncreaseCountButton(
 
 @Preview
 @Composable
-fun DecreaseCountButtonPreview() {
-    DecreaseCountButton { }
-}
-
-@Preview
-@Composable
-fun IncreaseCountButtonPreview() {
-    IncreaseCountButton { }
+fun IncrementCountButtonPreview() {
+    IncrementCountButton { }
 }

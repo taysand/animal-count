@@ -7,3 +7,6 @@ import androidx.room.RoomDatabase
 abstract class AnimalDatabase : RoomDatabase() {
     abstract fun animalDao(): AnimalDao
 }
+
+const val ANIMAL_DATABASE = "Animals.db"
+const val ANIMAL_TABLE = "animal"

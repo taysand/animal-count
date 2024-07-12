@@ -13,6 +13,7 @@ import com.example.animalcount.util.SampleAnimalList
 fun AnimalList(
     list: List<Animal>,
     increaseCount: (Int) -> Unit,
+    deleteAnimal: (Int) -> Unit,
     modifier: Modifier = Modifier,
 ) {
     Column(
@@ -22,7 +23,8 @@ fun AnimalList(
         list.forEachIndexed { index, animal ->
             AnimalRow(
                 animal = animal,
-                increaseCount = { increaseCount(index) }
+                increaseCount = { increaseCount(index) },
+                deleteAnimal = { deleteAnimal(index) }
             )
         }
     }
@@ -34,5 +36,6 @@ fun AnimalListPreview() {
     AnimalList(
         list = SampleAnimalList,
         increaseCount = { },
+        deleteAnimal = { },
     )
 }
