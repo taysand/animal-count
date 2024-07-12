@@ -12,14 +12,18 @@ import com.example.animalcount.util.SampleAnimalList
 @Composable
 fun AnimalList(
     list: List<Animal>,
+    increaseCount: (Int) -> Unit,
     modifier: Modifier = Modifier,
 ) {
     Column(
         verticalArrangement = Arrangement.spacedBy(LargePadding),
         modifier = modifier,
     ) {
-        for (animal in list) {
-            AnimalRow(animal)
+        list.forEachIndexed { index, animal ->
+            AnimalRow(
+                animal = animal,
+                increaseCount = { increaseCount(index) }
+            )
         }
     }
 }
@@ -27,5 +31,8 @@ fun AnimalList(
 @Preview
 @Composable
 fun AnimalListPreview() {
-    AnimalList(SampleAnimalList)
+    AnimalList(
+        list = SampleAnimalList,
+        increaseCount = { },
+    )
 }

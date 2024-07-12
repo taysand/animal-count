@@ -13,7 +13,6 @@ import com.example.animalcount.util.SampleAnimalList
 
 @Composable
 fun AnimalInfo(
-    count: Int,
     animal: Animal,
     modifier: Modifier = Modifier,
 ) {
@@ -22,7 +21,7 @@ fun AnimalInfo(
         modifier = modifier
     ) {
         Text(
-            text = count.toString(),
+            text = animal.count.toString(),
             style = MaterialTheme.typography.titleLarge.copy(fontSize = LargeFont),
         )
         Text(
@@ -35,5 +34,5 @@ fun AnimalInfo(
 @Preview
 @Composable
 fun AnimalInfoPreview() {
-    AnimalInfo(count = 3, animal = SampleAnimalList[0])
+    AnimalInfo(animal = SampleAnimalList[0])
 }

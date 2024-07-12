@@ -36,6 +36,9 @@ fun HomePage(
             AnimalList(
                 modifier = modifier,
                 list = animalList,
+                increaseCount = { index ->
+                    viewModel.increaseCount(index)
+                }
             )
         } else {
             Text("empty state")
