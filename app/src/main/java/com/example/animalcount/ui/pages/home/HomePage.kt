@@ -9,6 +9,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
+import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.animalcount.R
@@ -18,14 +19,15 @@ import com.example.animalcount.ui.components.AppScaffold
 @Composable
 fun HomePage(
     modifier: Modifier = Modifier,
-    viewModel: HomePageViewModel = viewModel(),
+    viewModel: HomePageViewModel = hiltViewModel(),
+    navigateToAddAnimal: () -> Unit,
 ) {
     val uiState by viewModel.uiState.collectAsStateWithLifecycle()
     val animalList = uiState.animalList
     AppScaffold(
         floatingActionButton = {
             FloatingActionButton(
-                onClick = { viewModel.addAnimal() },
+                onClick = { navigateToAddAnimal() },
             ) {
                 Icon(
                     Icons.Filled.Add,
