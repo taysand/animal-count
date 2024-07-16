@@ -2,6 +2,6 @@
     <string name="app_name">Animal Count</string>
     <string name="add_one">Add one</string>
     <string name="delete_animal">Delete animal</string>
-    <string name="add_animal">Add animal</string>
+    <string name="add_animal">Add Animal</string>
     <string name="no_animals">No animals found</string>
 </resources>
