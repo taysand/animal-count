@@ -31,7 +31,11 @@ fun AnimalCountApp(
                 )
             }
             composable(route = AddAnimal().route) {
-                AddAnimalPage()
+                AddAnimalPage(
+                    navigateBack = {
+                        navController.popBackStack()
+                    }
+                )
             }
         }
     }
