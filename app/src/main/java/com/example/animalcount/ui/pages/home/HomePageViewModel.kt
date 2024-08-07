@@ -29,12 +29,6 @@ class HomePageViewModel @Inject constructor(
         }
     }
 
-    fun addAnimal() {
-        viewModelScope.launch {
-            repository.create("Test animal")
-        }
-    }
-
     fun increaseCount(index: Int) {
         val animal = uiState.value.animalList[index]
         val updatedAnimal = animal.copy(count = animal.count + 1)
