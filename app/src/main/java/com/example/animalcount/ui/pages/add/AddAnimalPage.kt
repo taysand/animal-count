@@ -38,12 +38,11 @@ fun AddAnimalPage(
         )
         Button(
             onClick = {
-                if (uiState.name.isNotEmpty()) {
-                    keyboardController?.hide()
-                    viewModel.addAnimal()
-                    navigateBack()
-                }
+                keyboardController?.hide()
+                viewModel.addAnimal()
+                navigateBack()
             },
+            enabled = uiState.name.isNotEmpty(),
         ) {
             Text(stringResource(id = R.string.add_animal))
         }
