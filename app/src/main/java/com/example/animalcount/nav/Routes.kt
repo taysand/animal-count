@@ -9,12 +9,12 @@ sealed interface AnimalCountDestination {
     val route: String
 }
 
-data class Home(
-    @StringRes override val title: Int = R.string.app_name,
-    override val route: String = "home",
-) : AnimalCountDestination
+data object Home : AnimalCountDestination {
+    @StringRes override val title: Int = R.string.app_name
+    override val route: String = "home"
+}
 
-data class AddAnimal(
-    @StringRes override val title: Int = R.string.add_animal,
-    override val route: String = "add_animal",
-) : AnimalCountDestination
+data object AddAnimal : AnimalCountDestination {
+    @StringRes override val title: Int = R.string.add_animal
+    override val route: String = "add_animal"
+}
