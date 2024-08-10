@@ -2,11 +2,17 @@ package com.example.animalcount.ui.components
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.material3.Button
+import androidx.compose.material3.ButtonDefaults
+import androidx.compose.material3.Icon
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
+import com.example.animalcount.R
 import com.example.animalcount.model.Animal
 import com.example.animalcount.ui.theme.MediumPadding
 import com.example.animalcount.util.SampleAnimalList
@@ -26,7 +32,15 @@ fun AnimalRow(
         ),
         modifier = modifier,
     ) {
-        DeleteButton { deleteAnimal() }
+        Button(
+            onClick = deleteAnimal,
+            colors = ButtonDefaults.buttonColors().copy(containerColor = Color.Red)
+        ) {
+            Icon(
+                painterResource(id = R.drawable.baseline_remove_24),
+                contentDescription = stringResource(id = R.string.delete_animal),
+            )
+        }
         AnimalInfoCard(
             animal = animal,
             onClick = increaseCount,
