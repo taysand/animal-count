@@ -34,6 +34,12 @@ class AddAnimalPageViewModel @Inject constructor(
             currentState.copy(name = name)
         }
     }
+
+    fun updateAnimalEmoji(emoji: String) {
+        _uiState.update { currentState ->
+            currentState.copy(emoji = emoji)
+        }
+    }
 }
 
 data class AddAnimalPageUiState(

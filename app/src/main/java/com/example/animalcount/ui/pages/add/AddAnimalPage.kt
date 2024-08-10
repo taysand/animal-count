@@ -17,15 +17,19 @@ fun AddAnimalPage(
     val keyboardController = LocalSoftwareKeyboardController.current
 
     AddAnimalContents(
-        animalName = uiState.name,
-        modifier = modifier,
+        name = uiState.name,
+        emoji = uiState.emoji,
         onAnimalNameChange = { name ->
             viewModel.updateAnimalName(name)
+        },
+        onAnimalEmojiChange = { emoji ->
+            viewModel.updateAnimalEmoji(emoji)
         },
         onAddButtonClick = {
             keyboardController?.hide()
             viewModel.addAnimal()
             navigateBack()
-        }
+        },
+        modifier = modifier,
     )
 }
