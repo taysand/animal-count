@@ -24,14 +24,13 @@ fun AnimalRow(
             space = MediumPadding,
             alignment = Alignment.CenterHorizontally
         ),
-        modifier = modifier.fillMaxWidth(),
+        modifier = modifier,
     ) {
         DeleteButton { deleteAnimal() }
-        AnimalInfo(
+        AnimalInfoCard(
             animal = animal,
-            modifier = Modifier.weight(1f),
+            onClick = increaseCount,
         )
-        IncrementCountButton { increaseCount() }
     }
 }
 
