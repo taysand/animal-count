@@ -11,12 +11,14 @@ data class LocalAnimal(
     @PrimaryKey val id: String,
     val name: String,
     val count: Int,
+    val emoji: String,
 )
 
 fun LocalAnimal.toExternal() = Animal(
     name = name,
     count = count,
     id = id,
+    emoji = emoji,
 )
 
 fun List<LocalAnimal>.toExternal() = map(LocalAnimal::toExternal)
@@ -25,4 +27,5 @@ fun Animal.toLocal() = LocalAnimal(
     id = id,
     name = name,
     count = count,
+    emoji = emoji,
 )
