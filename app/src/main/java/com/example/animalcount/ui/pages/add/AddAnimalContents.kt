@@ -12,25 +12,35 @@ import com.example.animalcount.R
 
 @Composable
 fun AddAnimalContents(
-    animalName: String,
-    modifier: Modifier = Modifier,
+    name: String,
+    emoji: String,
     onAnimalNameChange: (String) -> Unit,
+    onAnimalEmojiChange: (String) -> Unit,
     onAddButtonClick: () -> Unit,
+    modifier: Modifier = Modifier,
 ) {
     Column(
         modifier = modifier,
     ) {
         TextField(
-            value = animalName,
+            value = name,
             singleLine = true,
             onValueChange = onAnimalNameChange,
             placeholder = {
-                Text(stringResource(id = R.string.animal_name))
+                Text(stringResource(id = R.string.name))
+            },
+        )
+        TextField(
+            value = emoji,
+            singleLine = true,
+            onValueChange = onAnimalEmojiChange,
+            placeholder = {
+                Text(stringResource(id = R.string.emoji))
             },
         )
         Button(
             onClick = onAddButtonClick,
-            enabled = animalName.isNotEmpty(),
+            enabled = name.isNotEmpty() && emoji.isNotEmpty(),
         ) {
             Text(stringResource(id = R.string.add_animal))
         }
@@ -41,8 +51,10 @@ fun AddAnimalContents(
 @Composable
 fun AddAnimalPageContentsPreview() {
     AddAnimalContents(
-        animalName = "",
+        name = "",
+        emoji = "",
         onAnimalNameChange = { },
-        onAddButtonClick = { }
+        onAnimalEmojiChange = { },
+        onAddButtonClick = { },
     )
 }

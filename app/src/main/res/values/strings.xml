@@ -4,6 +4,7 @@
     <string name="delete_animal">Delete animal</string>
     <string name="add_animal">Add Animal</string>
     <string name="no_animals">No animals found</string>
-    <string name="animal_name">Animal name</string>
+    <string name="name">Name</string>
+    <string name="emoji">Emoji</string>
     <string name="back_button">Back</string>
 </resources>
