@@ -22,7 +22,10 @@ class AddAnimalPageViewModel @Inject constructor(
 
     fun addAnimal() {
         viewModelScope.launch {
-            repository.create(uiState.value.name.capitalize(Locale.current))
+            repository.create(
+                name = uiState.value.name.capitalize(Locale.current),
+                emoji = uiState.value.emoji,
+            )
         }
     }
 
@@ -35,4 +38,5 @@ class AddAnimalPageViewModel @Inject constructor(
 
 data class AddAnimalPageUiState(
     val name: String = "",
+    val emoji: String = "",
 )

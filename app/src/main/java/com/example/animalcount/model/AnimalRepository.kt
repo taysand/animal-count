@@ -19,14 +19,15 @@ class AnimalRepository @Inject constructor(
         animals.toExternal()
     }
 
-    suspend fun create(name: String): String {
+    suspend fun create(name: String, emoji: String): String {
         val animalId = withContext(dispatcher) {
             createAnimalId()
         }
         val animal = Animal(
             id = animalId,
             name = name,
-            count = 0
+            count = 0,
+            emoji = emoji,
         )
         localDataSource.addAnimal(animal.toLocal())
         return animalId
