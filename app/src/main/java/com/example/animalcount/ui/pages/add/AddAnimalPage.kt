@@ -1,18 +1,11 @@
 package com.example.animalcount.ui.pages.add
 
-import androidx.compose.foundation.layout.Column
-import androidx.compose.material3.Button
-import androidx.compose.material3.Text
-import androidx.compose.material3.TextField
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalSoftwareKeyboardController
-import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
-import com.example.animalcount.R
 
 @Composable
 fun AddAnimalPage(
@@ -23,35 +16,16 @@ fun AddAnimalPage(
     val uiState by viewModel.uiState.collectAsStateWithLifecycle()
     val keyboardController = LocalSoftwareKeyboardController.current
 
-    Column(
+    AddAnimalContents(
+        animalName = uiState.name,
         modifier = modifier,
-    ) {
-        TextField(
-            value = uiState.name,
-            singleLine = true,
-            onValueChange = { name ->
-                viewModel.updateAnimalName(name)
-            },
-            placeholder = {
-                Text(stringResource(id = R.string.animal_name))
-            },
-        )
-        Button(
-            onClick = {
-                keyboardController?.hide()
-                viewModel.addAnimal()
-                navigateBack()
-            },
-            enabled = uiState.name.isNotEmpty(),
-        ) {
-            Text(stringResource(id = R.string.add_animal))
+        onAnimalNameChange = { name ->
+            viewModel.updateAnimalName(name)
+        },
+        onAddButtonClick = {
+            keyboardController?.hide()
+            viewModel.addAnimal()
+            navigateBack()
         }
-    }
-}
-
-
-@Preview
-@Composable
-fun AddAnimalPagePreview() {
-    AddAnimalPage(navigateBack = { })
+    )
 }
