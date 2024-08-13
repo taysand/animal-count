@@ -40,7 +40,7 @@ fun AddAnimalContents(
         )
         Button(
             onClick = onAddButtonClick,
-            enabled = name.isNotEmpty() && emoji.isNotEmpty(),
+            enabled = name.isNotEmpty(),
         ) {
             Text(stringResource(id = R.string.add_animal))
         }

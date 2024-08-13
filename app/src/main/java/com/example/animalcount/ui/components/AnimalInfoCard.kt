@@ -1,7 +1,9 @@
 package com.example.animalcount.ui.components
 
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Card
 import androidx.compose.material3.MaterialTheme
@@ -25,14 +27,17 @@ fun AnimalInfoCard(
     onClick: () -> Unit,
 ) {
     Card(
-        modifier = modifier
-            .clickable(
-                onClickLabel = stringResource(id = R.string.add_one),
-            ) { onClick() },
+        modifier = modifier,
     ) {
         Column(
             horizontalAlignment = Alignment.CenterHorizontally,
-            modifier = Modifier.padding(horizontal = LargePadding, vertical = MediumPadding),
+            verticalArrangement = Arrangement.Center,
+            modifier = Modifier
+                .clickable(
+                    onClickLabel = stringResource(id = R.string.add_one),
+                ) { onClick() }
+                .fillMaxSize()
+                .padding(horizontal = LargePadding, vertical = MediumPadding),
         ) {
             Text(
                 text = animal.count.toString(),
