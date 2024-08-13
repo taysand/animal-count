@@ -25,9 +25,6 @@ fun HomePage(
             increaseCount = { index ->
                 viewModel.increaseCount(index)
             },
-            deleteAnimal = { index ->
-                viewModel.deleteAnimal(index)
-            }
         )
     } else {
         Text(stringResource(id = R.string.no_animals))

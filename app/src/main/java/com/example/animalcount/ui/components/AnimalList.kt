@@ -1,30 +1,38 @@
 package com.example.animalcount.ui.components
 
 import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.lazy.grid.GridCells
+import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
+import androidx.compose.foundation.lazy.grid.itemsIndexed
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import com.example.animalcount.model.Animal
-import com.example.animalcount.ui.theme.LargePadding
+import com.example.animalcount.ui.theme.MediumPadding
 import com.example.animalcount.util.SampleAnimalList
 
 @Composable
 fun AnimalList(
     list: List<Animal>,
     increaseCount: (Int) -> Unit,
-    deleteAnimal: (Int) -> Unit,
     modifier: Modifier = Modifier,
 ) {
-    Column(
-        verticalArrangement = Arrangement.spacedBy(LargePadding),
-        modifier = modifier,
+    LazyVerticalGrid(
+        modifier = modifier.padding(MediumPadding),
+        columns = GridCells.Fixed(count = 2),
+        horizontalArrangement = Arrangement.spacedBy(MediumPadding),
+        verticalArrangement = Arrangement.spacedBy(MediumPadding),
     ) {
-        list.forEachIndexed { index, animal ->
-            AnimalRow(
+        itemsIndexed(
+            items = list,
+            key = { _, animal ->
+                animal.id
+            }
+        ) { index, animal ->
+            AnimalInfoCard(
                 animal = animal,
-                increaseCount = { increaseCount(index) },
-                deleteAnimal = { deleteAnimal(index) }
+                onClick = { increaseCount(index) },
             )
         }
     }
@@ -36,6 +44,5 @@ fun AnimalListPreview() {
     AnimalList(
         list = SampleAnimalList,
         increaseCount = { },
-        deleteAnimal = { },
     )
 }
