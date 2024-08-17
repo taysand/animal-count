@@ -36,10 +36,8 @@ fun AnimalCountNavHost(
         composable(
             route = AnimalDetail.routeWithArgs,
             arguments = AnimalDetail.arguments,
-        ) { navBackStackEntry ->
-            navBackStackEntry.arguments?.getString(AnimalDetail.ANIMAL_ID_ARG)?.let {
-                AnimalDetailPage(id = it)
-            }
+        ) {
+            AnimalDetailPage()
         }
     }
 }

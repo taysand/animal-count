@@ -36,12 +36,6 @@ class HomePageViewModel @Inject constructor(
             repository.increaseCount(updatedAnimal)
         }
     }
-
-    fun deleteAnimal(index: Int) {
-        viewModelScope.launch {
-            repository.deleteAnimal(uiState.value.animalList[index])
-        }
-    }
 }
 
 data class HomePageUiState(
