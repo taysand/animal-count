@@ -18,3 +18,8 @@ data object AddAnimal : AnimalCountDestination {
     @StringRes override val title: Int = R.string.add_animal
     override val route: String = "add_animal"
 }
+
+data object AnimalDetail : AnimalCountDestination {
+    override val title: Int = R.string.open_animal_detail_page
+    override val route: String = "animal_detail"
+}
