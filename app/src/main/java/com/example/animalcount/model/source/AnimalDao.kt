@@ -21,4 +21,7 @@ interface AnimalDao {
 
     @Delete
     suspend fun deleteAnimal(animal: LocalAnimal)
+
+    @Query("SELECT * FROM animal WHERE id=:id")
+    suspend fun loadAnimal(id: String): LocalAnimal
 }

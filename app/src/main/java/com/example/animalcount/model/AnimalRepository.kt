@@ -41,6 +41,8 @@ class AnimalRepository @Inject constructor(
         localDataSource.deleteAnimal(animal.toLocal())
     }
 
+    suspend fun loadAnimal(id: String): Animal = localDataSource.loadAnimal(id).toExternal()
+
     private fun createAnimalId(): String {
         return UUID.randomUUID().toString()
     }
