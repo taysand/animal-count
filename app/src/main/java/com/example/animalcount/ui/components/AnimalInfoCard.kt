@@ -1,6 +1,7 @@
 package com.example.animalcount.ui.components
 
-import androidx.compose.foundation.clickable
+import androidx.compose.foundation.ExperimentalFoundationApi
+import androidx.compose.foundation.combinedClickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
@@ -20,11 +21,13 @@ import com.example.animalcount.ui.theme.LargePadding
 import com.example.animalcount.ui.theme.MediumPadding
 import com.example.animalcount.util.SampleAnimalList
 
+@OptIn(ExperimentalFoundationApi::class)
 @Composable
 fun AnimalInfoCard(
     animal: Animal,
-    modifier: Modifier = Modifier,
     onClick: () -> Unit,
+    onLongClick: () -> Unit,
+    modifier: Modifier = Modifier,
 ) {
     Card(
         modifier = modifier,
@@ -33,9 +36,12 @@ fun AnimalInfoCard(
             horizontalAlignment = Alignment.CenterHorizontally,
             verticalArrangement = Arrangement.Center,
             modifier = Modifier
-                .clickable(
+                .combinedClickable(
+                    onClick = { onClick() },
                     onClickLabel = stringResource(id = R.string.add_one),
-                ) { onClick() }
+                    onLongClick = { onLongClick() },
+                    onLongClickLabel = stringResource(R.string.open_animal_detail_page)
+                )
                 .fillMaxSize()
                 .padding(horizontal = LargePadding, vertical = MediumPadding),
         ) {
@@ -61,5 +67,6 @@ fun AnimalInfoCardPreview() {
     AnimalInfoCard(
         animal = SampleAnimalList[0],
         onClick = { },
+        onLongClick = { },
     )
 }

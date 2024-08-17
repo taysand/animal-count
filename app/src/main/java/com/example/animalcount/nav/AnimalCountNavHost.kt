@@ -6,6 +6,7 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import com.example.animalcount.ui.pages.add.AddAnimalPage
+import com.example.animalcount.ui.pages.detail.AnimalDetailPage
 import com.example.animalcount.ui.pages.home.HomePage
 
 @Composable
@@ -19,7 +20,11 @@ fun AnimalCountNavHost(
         modifier = modifier,
     ) {
         composable(route = Home.route) {
-            HomePage()
+            HomePage(
+                openDetailPage = { animalId ->
+                    navController.navigate(route = "${AnimalDetail.route}/$animalId")
+                }
+            )
         }
         composable(route = AddAnimal.route) {
             AddAnimalPage(
@@ -27,6 +32,14 @@ fun AnimalCountNavHost(
                     navController.popBackStack()
                 }
             )
+        }
+        composable(
+            route = AnimalDetail.routeWithArgs,
+            arguments = AnimalDetail.arguments,
+        ) { navBackStackEntry ->
+            navBackStackEntry.arguments?.getString(AnimalDetail.ANIMAL_ID_ARG)?.let {
+                AnimalDetailPage(id = it)
+            }
         }
     }
 }

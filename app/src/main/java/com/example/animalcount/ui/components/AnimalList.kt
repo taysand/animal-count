@@ -16,6 +16,7 @@ import com.example.animalcount.util.SampleAnimalList
 fun AnimalList(
     list: List<Animal>,
     increaseCount: (Int) -> Unit,
+    openDetailPage: (String) -> Unit,
     modifier: Modifier = Modifier,
 ) {
     LazyVerticalGrid(
@@ -33,6 +34,7 @@ fun AnimalList(
             AnimalInfoCard(
                 animal = animal,
                 onClick = { increaseCount(index) },
+                onLongClick = { openDetailPage(animal.id) },
             )
         }
     }
@@ -44,5 +46,6 @@ fun AnimalListPreview() {
     AnimalList(
         list = SampleAnimalList,
         increaseCount = { },
+        openDetailPage = { },
     )
 }
