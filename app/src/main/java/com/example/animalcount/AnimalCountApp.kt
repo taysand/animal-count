@@ -13,6 +13,7 @@ import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import com.example.animalcount.nav.AddAnimal
 import com.example.animalcount.nav.AnimalCountNavHost
+import com.example.animalcount.nav.AnimalDetail
 import com.example.animalcount.nav.Home
 import com.example.animalcount.ui.components.AnimalCountScaffold
 import com.example.animalcount.ui.theme.AnimalCountTheme
@@ -24,11 +25,14 @@ fun AnimalCountApp(
 ) {
     AnimalCountTheme {
         val backStackEntry by navController.currentBackStackEntryAsState()
+        val route = backStackEntry?.destination?.route
         val currentScreen =
-            when (backStackEntry?.destination?.route) {
-                AddAnimal.route -> AddAnimal
-                Home.route -> Home
-                else -> Home
+            if (route?.startsWith(AnimalDetail.route) == true) {
+                AnimalDetail
+            } else if (route == AddAnimal.route) {
+                AddAnimal
+            } else {
+                Home
             }
 
         AnimalCountScaffold(
