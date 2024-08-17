@@ -1,6 +1,8 @@
 package com.example.animalcount.nav
 
 import androidx.annotation.StringRes
+import androidx.navigation.NavType
+import androidx.navigation.navArgument
 import com.example.animalcount.R
 
 sealed interface AnimalCountDestination {
@@ -20,6 +22,11 @@ data object AddAnimal : AnimalCountDestination {
 }
 
 data object AnimalDetail : AnimalCountDestination {
-    override val title: Int = R.string.open_animal_detail_page
-    override val route: String = "animal_detail"
+    @StringRes override val title: Int = R.string.animal_detail
+    override val route = "animal_detail"
+    const val ANIMAL_ID_ARG = "animal_id"
+    val routeWithArgs = "$route/{$ANIMAL_ID_ARG}"
+    val arguments = listOf(
+        navArgument(ANIMAL_ID_ARG) { type = NavType.StringType }
+    )
 }

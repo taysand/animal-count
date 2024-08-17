@@ -21,8 +21,8 @@ fun AnimalCountNavHost(
     ) {
         composable(route = Home.route) {
             HomePage(
-                openDetailPage = {
-                    navController.navigate(route = AnimalDetail.route)
+                openDetailPage = { animalId ->
+                    navController.navigate(route = "${AnimalDetail.route}/$animalId")
                 }
             )
         }
@@ -33,8 +33,13 @@ fun AnimalCountNavHost(
                 }
             )
         }
-        composable(route = AnimalDetail.route) {
-            AnimalDetailPage()
+        composable(
+            route = AnimalDetail.routeWithArgs,
+            arguments = AnimalDetail.arguments,
+        ) { navBackStackEntry ->
+            navBackStackEntry.arguments?.getString(AnimalDetail.ANIMAL_ID_ARG)?.let {
+                AnimalDetailPage(id = it)
+            }
         }
     }
 }

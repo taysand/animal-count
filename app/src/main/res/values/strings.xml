@@ -8,4 +8,5 @@
     <string name="emoji">Emoji</string>
     <string name="back_button">Back</string>
     <string name="open_animal_detail_page">Open animal detail page</string>
+    <string name="animal_detail">Animal detail</string>
 </resources>

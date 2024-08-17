@@ -14,7 +14,7 @@ import com.example.animalcount.ui.components.AnimalList
 fun HomePage(
     modifier: Modifier = Modifier,
     viewModel: HomePageViewModel = hiltViewModel(),
-    openDetailPage: () -> Unit,
+    openDetailPage: (String) -> Unit,
 ) {
     val uiState by viewModel.uiState.collectAsStateWithLifecycle()
     val animalList = uiState.animalList
@@ -26,8 +26,8 @@ fun HomePage(
             increaseCount = { index ->
                 viewModel.increaseCount(index)
             },
-            openDetailPage = { index ->
-                openDetailPage() // TODO specific animal
+            openDetailPage = { animalId ->
+                openDetailPage(animalId)
             }
         )
     } else {

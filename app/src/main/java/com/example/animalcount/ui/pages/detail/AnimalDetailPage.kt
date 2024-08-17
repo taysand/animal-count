@@ -6,7 +6,8 @@ import androidx.compose.ui.Modifier
 
 @Composable
 fun AnimalDetailPage(
+    id: String,
     modifier: Modifier = Modifier,
 ) {
-    Text("animal detail page")
+    Text("animal detail page for $id")
 }
